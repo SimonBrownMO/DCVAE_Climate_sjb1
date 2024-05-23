@@ -36,8 +36,4 @@ dependencies:
 # Replace with the path to your project directory root.
 
 variables:
-<<<<<<< HEAD
   PYTHONPATH: /lustre/home/br-train30/philip1/DCVAE_Climate_sjb1
-=======
-  PYTHONPATH: /home/h03/hadsx/extremes/ML/pb1/DCVAE_Climate_sjb1:/home/h03/hadsx/extremes/ML/pb1/DCVAE_Climate_sjb1/cpm1
->>>>>>> 18511adc48e6e8329c86edecab159b114a4a5904
