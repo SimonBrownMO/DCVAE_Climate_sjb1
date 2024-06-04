@@ -11,10 +11,10 @@ import tensorflow as tf
 
 import sys
 sys.path.append('/home/mo-sbrown/philip1/DCVAE_Climate_sjb1/cpm1')
-from ML_models.mk1.makeDataset import getDataset
-from ML_models.mk1.autoencoderModel import getModel
+from ML_models.mk2.makeDataset import getDataset
+from ML_models.mk2.autoencoderModel import getModel
 
-from ML_models.mk1.gmUtils import plotValidationField
+from ML_models.mk2.gmUtils import plotValidationField
 
 from specify import specification
 
@@ -30,10 +30,10 @@ logging.getLogger("matplotlib.font_manager").disabled = True
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--epoch", help="Epoch", type=int, required=False, default=500)
-parser.add_argument("--year", help="Test year", type=int, required=False, default=None)
+parser.add_argument("--epoch", help="Epoch", type=int, required=False, default=5)
+parser.add_argument("--year", help="Test year", type=int, required=False, default=1990)
 parser.add_argument(
-    "--day", help="Test day", type=int, required=False, default=None
+    "--day", help="Test day", type=int, required=False, default=786
 )
 parser.add_argument(
     "--training",
@@ -67,18 +67,19 @@ for batch in dataset:
     year = int(dateStr[10:14]) # int(fN[:4])
     idot    = str(dateStr).find('.')
     day     = int(dateStr[15:(idot-2)]) # int(fN[5:7])
-    input = batch
-    break
-    # print(dateStr, year, day)
-
+    if (day == args.day) and (year == args.year):
+        print(dateStr, idot, year, day)
+        input = batch
+        break
 
 if input is None:
-    raise Exception("Month %04d-%02d not in %s dataset" % (year, day, purpose))
+    raise Exception("%04d-%02d not in %s dataset" % (year, day, purpose))
 
 autoencoder = getModel(specification, args.epoch)
+print("getModel success")
 
 # Get autoencoded tensors
 output = autoencoder.call(input, training=False)
 
 # Make the plot
-plotValidationField(specification, input, output, year, month, "comparison.webp")
+plotValidationField(specification, input, output, year, day, "comparison-4c-gpu.webp")

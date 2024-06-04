@@ -13,9 +13,9 @@ from statistics import mean
 from specify import specification
 
 
-from ML_models.mk1.makeDataset import getDataset
-from ML_models.mk1.autoencoderModel import getModel
-from ML_models.mk1.gmUtils import (
+from ML_models.mk2.makeDataset import getDataset
+from ML_models.mk2.autoencoderModel import getModel
+from ML_models.mk2.gmUtils import (
     computeScalarStats,
     plotScalarStats,
 )

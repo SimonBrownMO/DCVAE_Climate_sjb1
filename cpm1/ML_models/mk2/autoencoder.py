@@ -24,10 +24,10 @@ args = parser.parse_args()
 # Load the data path, data source, and model specification
 from specify import specification
 sys.path.append('/home/mo-sbrown/philip1/DCVAE_Climate_sjb1/cpm1')
-from ML_models.mk1.makeDataset import getDataset
-from ML_models.mk1.autoencoderModel import DCVAE, getModel
+from ML_models.mk2.makeDataset import getDataset
+from ML_models.mk2.autoencoderModel import DCVAE, getModel
 
-from ML_models.mk1.makeDataset import getFileNames
+from ML_models.mk2.makeDataset import getFileNames
 
 # Get Datasets
 def getDatasets():
@@ -124,3 +124,5 @@ with specification["strategy"].scope():
                 int(end_monitoring_time - end_training_time),
             )
         )
+print("Autoencoder all saved in",save_dir)
+

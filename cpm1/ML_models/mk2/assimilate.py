@@ -9,10 +9,10 @@ import numpy as np
 import tensorflow as tf
 import tensorflow_probability as tfp
 
-from ML_models.mk1.makeDataset import getDataset
-from ML_models.mk1.autoencoderModel import getModel
+from ML_models.mk2.makeDataset import getDataset
+from ML_models.mk2.autoencoderModel import getModel
 
-from ML_models.mk1.gmUtils import plotValidationField
+from ML_models.mk2.gmUtils import plotValidationField
 
 from specify import specification
 
